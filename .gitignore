@@ -1,0 +1,58 @@
+# Ignore Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore C++ binary files and temporary files
+*.out
+*.exe
+*.dSYM
+*.obj
+*.o
+*.so
+*.a
+*.lib
+
+# Ignore C++ executables without extensions (detected in the project structure)
+basics/sample
+basics/largestAreaInHistorgram
+heap/lastStoneWeight
+heap/taskScheduler
+stack/valid_parenthesis
+basics/copy
+recursion/merge_sort
+assignment/
+assignment/amazon
+
+# General rule to ignore all executable files without an extension
+*.[!./]*
+
+# Ignore IDE files (e.g., Visual Studio Code, JetBrains, etc.)
+.vscode/
+.idea/
+
+# Ignore temporary files
+*.swp
+*.swo
+*~
+
+# Ignore compiled C++ files and executables
+*.exe
+*.out
+*.dSYM
+*.o
+*.a
+*.obj
+
+# Ignore backup and temporary files from editors
+*~
+*.bak
+*.tmp
+
+# Ignore test and coverage reports
+*.log
+*.coverage
+
+# Ignore any other system files
+.DS_Store
+Thumbs.db
