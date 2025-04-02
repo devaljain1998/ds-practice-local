@@ -22,7 +22,11 @@ stack/valid_parenthesis
 basics/copy
 recursion/merge_sort
 assignment/
-assignment/amazon
+assignment/amazon/
+assignment/zzazz/*
+assignments/zzazz/Dockerfile
+assignments/zzazz/sample.py
+assignments/zzazz/snakes_ladders.py
 
 # General rule to ignore all executable files without an extension
 *.[!./]*
@@ -56,3 +60,6 @@ assignment/amazon
 # Ignore any other system files
 .DS_Store
 Thumbs.db
+
+# Ignore temporary Python files created by IDEs
+tempCodeRunnerFile.py
