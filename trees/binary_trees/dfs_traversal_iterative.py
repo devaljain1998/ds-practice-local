@@ -27,25 +27,45 @@ class Solution:
         if root is None:
             return []
         order = []
-        stack = deque([root])
+        stack = deque()
         
-        while stack:
-            node = stack.pop()
-            
-                
+        node = root
+        while True:
+            # Keep pushing the left elements into stack
+            # until node is not None
+            if node is not None:
+                stack.append(node)
+                node = node.left
+            # if node is not none, then pop the stack
+            # and then go to the left
+            else:
+                # if stack is empty then break
+                if len(stack) == 0:
+                    break
+                node = stack.pop()
+                order.append(node.val)
+                node = node.right
+        
         return order
+
 
 class Solution:
     def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         order = []
-        
-        def postorder_dfs(root: Optional[TreeNode]):
-            if root == None:
-                return
-            
-            postorder_dfs(root.left)
-            postorder_dfs(root.right)
-            order.append(root.val)
-        
-        postorder_dfs(root)
+        node = root
+        stack = deque()
+        while True:
+            # if node is there:
+            if node is not None:
+                stack.append(node)
+                node = node.right
+            # if node is null now
+            # then go the right
+            else:
+                if len(stack) == 0:
+                    break
+                node = stack.pop()
+                order.append(node.val)
+                node = node.left
+                
         return order
