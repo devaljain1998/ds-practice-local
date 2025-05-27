@@ -1,0 +1,88 @@
+Grammar Check:
+1. Sentence by Sentence
+2. Read the text
+3. Detect the language
+4. Understand Sentences - Semantic
+5. Grammar Check.
+
+/api/v1/model_version -> 1.0.0
+/api/v1/<model_version>/download
+
+/api/v1/model_check?model_version=1.0.0&checksum=<>&last_updated=today
+assets/
+
+url -> model_version
+assets/
+BlobStorage -> stored
+Javascript -> Download
+
+
+// On-Device 
+DetectLanguage(string) -> Language {
+    1. Tokenisation -> Frontend
+    2. Hi, Qui, Namaste
+    3. List of input tokens and feed them into an NLP Model (client side)
+
+}
+
+Hi from Quillbot. - English
+Qui from Quillbot - Spanish.
+
+{script} Namaste Quillbot. - Hindi
+
+
+Input: Hello I am Ankit. How are you doing
+Output: ['Hello I am Ankit', 'How are you doing']
+
+// StrategyPattern -> Language -> LanguageStrategy
+SemanticCheck(string) -> []string {
+    
+}
+
+
+1. Backend:
+1.1 Pros:
+    - Not need to load a lot of models on the frontend
+    - Model is sort of large so takes some time to download (probably atmax 5 secs)
+    - Keep memory on browser side (freed).
+    - LanguageStrategy
+1.2 Cons:
+    - Text is too large:
+        - Multiple concurrent API calls and wait on them
+        - Merge (frontend)
+    - Lags
+
+2. Frontend:
+    Pros:
+        - Once the model is downloaded, very fast to process on-device (since text is large) [SPEED]
+    Cons:
+        - 
+-> Primary Language
+
+
+// o4-mini and o4
+GrammarCheckOffline([]string) []string {
+    1. Take these input strings and put it into o4-mini
+    2. Fetch the output
+    return the output
+}
+
+GrammarCheckOnline([]string) []string {
+    1. API call
+    return the output
+}
+
+> I am eating an banana
+Online: Banana -> Apple
+Offline: Banana -> Avocado
+
+group_the_suggestions: {a, banana} -> Online
+                        {an, Avocado} -> 
+
+// 1 sec
+GrammarCheckOffline() -> gcoff
+
+// after 1 sec
+GrammarCheckOnline([]string, gcoff) {
+    
+}
