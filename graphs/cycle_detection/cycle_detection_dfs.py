@@ -23,6 +23,8 @@ class Solution:
                 # then there is a cycle.
                 elif parent != nbr and nbr in visited:
                     return True
+                
+            return False
             
         return dfs(0, -1)
     
