@@ -1,0 +1,40 @@
+Question:Design a data structure for a Prompt Management System that supports:
+addPrompt(tenantId, userId, promptKey, promptVersion, promptText)
+getPrompt(tenantId, userId, promptKey) -> promptVersion, promptText
+    tenantId -> optional, userId -> optional
+    always return the newest version
+rollbackPrompt(tenantId, userId, promptKey, toVersion)
+getPromptHistory(tenantId, userId, promptKey)with O(log n) or better per key, scalable to millions of prompts, and supporting concurrency.
+
+### System definition:
+
+Non functional:
+read heavy
+highly available
+
+
+#### Brute Force:
+prompts = {}
+promptKey v1, {prompVersion, promptText} -> tenantId -> userId {}
+Dict[Dict[Dict], SortedList(version)]
+
+addPrompt: insert into the map
+getPrompt:
+    linearSearch: O(N)
+        iterate every prompt, check promptKey -> tenantId -> userId
+        promptKey always exits, then inside it tenantId might exist, and then inisde it userId might exist
+    
+    search the map:
+        search for the promptKey:
+            search for tenantId if not then return latest version:
+            if tenantId, search for userId and return latest version:
+
+
+
+{
+    "tenantId" : {
+        "user_id" : SortedList(),
+        "list": SortedList()
+    },
+    "list": SortedList()
+}
