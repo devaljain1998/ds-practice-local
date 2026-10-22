@@ -33,10 +33,45 @@ Constraints:
     1 <= k <= 1_000_000
 """
 
+def is_valid(bloomDays, m, k, mx):
+    boquets = 0
+    flowers = 0
+    for bloomDay in bloomDays:
+        # Flower is not bloomed
+        if bloomDay > mx:
+            flowers = 0
+            continue
+        
+        flowers += 1
+        # If flowers are forming a boquet:
+        if flowers == k:
+            flowers = 0
+            boquets += 1
+    
+    return boquets >= m
+        
+
 
 class Solution:
     def minDays(self, bloomDay: list[int], m: int, k: int) -> int:
-        raise NotImplementedError
+        n = len(bloomDay)
+        # Not possible
+        if m * k > n:
+            return -1
+
+        left = 1
+        right = max(bloomDay)
+
+        min_days = -1
+        while left <= right:
+            mid = left + (right - left) // 2
+            if is_valid(bloomDay, m, k, mid):
+                min_days = mid
+                right = mid - 1
+            else:
+                left = mid + 1
+        
+        return min_days
 
 
 METHOD = "minDays"
@@ -60,3 +95,8 @@ TEST_CASES = [
     ("hard: large one more bouquet needed", ([1, 1, 1, 1_000_000_000] * 5_000, 5_001, 3), 1_000_000_000),
     ("hard: large alternating bloom days", ([1, 1_000_000_000] * 10_000, 5_000, 2), 1_000_000_000),
 ]
+
+
+# Test case 1:
+if __name__ == '__main__':
+    print(Solution().minDays([1,10,3,10,2], 3, 1))
